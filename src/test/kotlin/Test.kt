@@ -18,8 +18,8 @@ class Test {
         println("Starting MoSIM!")
 
         val monitoringCSVLoc =
-            "/Users/sebastian/IdeaProjects/MoSim/src/main/resources/data_example.csv"
-        val mtlLoc = "/Users/sebastian/IdeaProjects/MoSim/src/main/resources/mtl_example.mtl"
+            "src/test/resources/data_example.csv"
+        val mtlLoc = "src/test/resources/mtl_example.mtl"
         val config = SearchConfiguration()
 
         val orchestrator = StimuliSearchOrchestrator(
