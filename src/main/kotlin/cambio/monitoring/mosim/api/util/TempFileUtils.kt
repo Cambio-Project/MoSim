@@ -8,17 +8,13 @@ import java.io.IOException
 import java.nio.file.FileSystems
 import java.nio.file.Files
 import java.nio.file.Path
-import java.nio.file.Paths
 import java.util.*
 import java.util.function.Consumer
-import java.util.stream.Collectors
 
 class TempFileUtils {
     companion object {
-
-        val RAW_OUTPUT_DIR = "raw_search_results"
-        val OUTPUT_DIR = "search_results"
-        val SEPARATOR = FileSystems.getDefault().separator
+        const val OUTPUT_DIR = "search_results"
+        private val SEPARATOR: String = FileSystems.getDefault().separator
 
         @Throws(
             IOException::
@@ -58,7 +54,7 @@ class TempFileUtils {
             temDir: Path
         ): Multimap<String, String> {
             if (files != null) {
-                Arrays.asList(*files).forEach(Consumer { file: MultipartFile? ->
+                listOf(*files).forEach(Consumer { file: MultipartFile? ->
                     try {
                         val tmpFile = saveFile(file!!, temDir)
                         val filePath = tmpFile.toString()
@@ -83,29 +79,16 @@ class TempFileUtils {
             if (!Files.exists(outPutDirPath)) {
                 Files.createDirectory(outPutDirPath)
             }
-            val simulationOutputDirPath = outputDirName + SEPARATOR + simulationId
-            return Files.createDirectory(Path.of(simulationOutputDirPath))
+            val simulationOutputDirPath = getOutputDir(outputDirName, simulationId)
+            return Files.createDirectory(simulationOutputDirPath)
         }
 
-
-        @Throws(IOException::class)
-        fun getFilesFromResultsDir(dirPath: Path): Set<String> {
-            val dir = dirPath.toString()
-            Files.list(Paths.get(dir)).use { stream ->
-                return stream
-                    .filter { file: Path? ->
-                        !Files.isDirectory(
-                            file
-                        )
-                    }
-                    .map { obj: Path -> obj.fileName }
-                    .map { obj: Path -> obj.toString() }
-                    .collect(Collectors.toSet())
-            }
+        fun getOutputDir(outputDirName: String, simulationId: String): Path {
+            return Path.of(outputDirName + SEPARATOR + simulationId)
         }
 
         fun existsSimulationId(simulationId: String): Boolean {
-            val simulationOutputDirPath = RAW_OUTPUT_DIR + SEPARATOR + simulationId
+            val simulationOutputDirPath = OUTPUT_DIR + SEPARATOR + simulationId
             return Files.exists(Path.of(simulationOutputDirPath))
         }
     }

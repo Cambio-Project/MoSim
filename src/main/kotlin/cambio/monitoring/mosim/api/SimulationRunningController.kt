@@ -18,7 +18,7 @@ import java.nio.file.Path
 @RestController
 class SimulationRunningController @Autowired constructor(private var simulationRunningService: SearchRunningService) {
 
-    var logger = LoggerFactory.getLogger(SimulationRunningController::class.java)
+    private var logger = LoggerFactory.getLogger(SimulationRunningController::class.java)
 
     @PostMapping("/search/upload")
     @Throws(IOException::class)
@@ -49,10 +49,10 @@ class SimulationRunningController @Autowired constructor(private var simulationR
             }
 
             val tmpFolder = prepareTmpFolder()
-            val outputFolder = prepareOutputFolder(id)
+            prepareOutputFolder(id)
             val savedFiles = prepareFiles(mtls, monitoringData, tmpFolder)
 
-            simulationRunningService.runSearch(savedFiles, outputFolder)
+            simulationRunningService.runSearch(savedFiles, id)
             if (!TempFileUtils.existsSimulationId(id)) {
                 return ResponseEntity(
                     String.format(
@@ -60,10 +60,7 @@ class SimulationRunningController @Autowired constructor(private var simulationR
                     ), HttpStatus.INTERNAL_SERVER_ERROR
                 )
             }
-
-            export(outputFolder)
             cleanUp(tmpFolder)
-
             ResponseEntity<String?>(
                 "Files have been successfully uploaded, and the search is running.", HttpStatus.OK
             )
@@ -75,7 +72,7 @@ class SimulationRunningController @Autowired constructor(private var simulationR
     }
 
     private fun prepareOutputFolder(id: String): Path {
-        return TempFileUtils.createOutputDir(TempFileUtils.RAW_OUTPUT_DIR, id)
+        return TempFileUtils.createOutputDir(TempFileUtils.OUTPUT_DIR, id)
     }
 
     private fun prepareTmpFolder(): Path {
@@ -94,11 +91,6 @@ class SimulationRunningController @Autowired constructor(private var simulationR
 
     private fun cleanUp(folder: Path) {
         FileUtils.deleteDirectory(folder.toFile())
-    }
-
-    private fun export(outputFolder: Path) {
-        val rawResultsDirPath = (outputFolder.toString() + TempFileUtils.SEPARATOR) + "raw"
-        // TODO: implement
     }
 
 }

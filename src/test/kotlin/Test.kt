@@ -2,7 +2,7 @@ import cambio.monitoring.mosim.StimuliSearchOrchestrator
 import cambio.monitoring.mosim.analysis.DefaultMetricsAnalyzer
 import cambio.monitoring.mosim.config.SearchConfiguration
 import cambio.monitoring.mosim.evaluation.DefaultEvaluator
-import cambio.monitoring.mosim.export.ConsoleExporter
+import cambio.monitoring.mosim.export.CSVFileExporter
 import cambio.monitoring.mosim.import.CSVDataImporter
 import cambio.monitoring.mosim.import.DefaultDataSplitter
 import cambio.monitoring.mosim.import.DefaultStimuliParser
@@ -29,7 +29,7 @@ class Test {
             DefaultSearchExecutor(),
             DefaultStimuliParser(),
             DefaultEvaluator(config),
-            ConsoleExporter()
+            CSVFileExporter(monitoringCSVLoc, config)
         )
 
         orchestrator.search(CSVDataImporter(monitoringCSVLoc), FileStimuliImporter(mtlLoc, config))
