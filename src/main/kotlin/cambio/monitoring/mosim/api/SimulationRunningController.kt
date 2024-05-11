@@ -28,16 +28,17 @@ class SimulationRunningController @Autowired constructor(private var simulationR
     fun handleMultipleFilesUpload(
         @RequestParam("mtls") mtls: Array<MultipartFile>,
         @RequestParam("monitoring_data") monitoringData: Array<MultipartFile>,
-        @RequestParam("simulation_id") id: String
+        @RequestParam("simulation_id") id: String,
+        @RequestParam("search_window_size") searchWindowSize: Double
     ): ResponseEntity<String?> {
-        return runSearch(mtls, monitoringData, id)
+        return runSearch(mtls, monitoringData, id, searchWindowSize)
     }
 
     // TODO: Handle this call in a non-blocking manner, taking into account that this implementation is not
     //  client friendly as it can time-out the request due to the long processing time.
     @Throws(IOException::class)
     private fun runSearch(
-        mtls: Array<MultipartFile>, monitoringData: Array<MultipartFile>, id: String
+        mtls: Array<MultipartFile>, monitoringData: Array<MultipartFile>, id: String, searchWindowSize: Double
     ): ResponseEntity<String?> {
         return try {
             if (TempFileUtils.existsSimulationId(id)) {
@@ -52,7 +53,7 @@ class SimulationRunningController @Autowired constructor(private var simulationR
             prepareOutputFolder(id)
             val savedFiles = prepareFiles(mtls, monitoringData, tmpFolder)
 
-            simulationRunningService.runSearch(savedFiles, id)
+            simulationRunningService.runSearch(savedFiles, id, searchWindowSize)
             if (!TempFileUtils.existsSimulationId(id)) {
                 return ResponseEntity(
                     String.format(

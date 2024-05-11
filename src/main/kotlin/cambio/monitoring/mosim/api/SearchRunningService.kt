@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service
 @Service
 class SearchRunningService {
 
-    fun runSearch(inputFiles: Multimap<String, String>, id: String) {
+    fun runSearch(inputFiles: Multimap<String, String>, id: String, searchWindowSize: Double) {
         val monitoringDataPathCollection = inputFiles["monitoring-data"]
         val mtlPathCollection = inputFiles["mtl"]
         if (monitoringDataPathCollection.isEmpty()) {
@@ -29,7 +29,7 @@ class SearchRunningService {
         val mtlPath = mtlPathCollection.iterator().next()
         val monitoringDataPath = monitoringDataPathCollection.iterator().next()
 
-        val config = SearchConfiguration(id = id)
+        val config = SearchConfiguration(id = id, searchWindowSize = searchWindowSize)
 
         val orchestrator = StimuliSearchOrchestrator(
             DefaultMetricsAnalyzer(),
