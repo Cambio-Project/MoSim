@@ -1,0 +1,2 @@
+◇[0,0] ((kill[example-service,1]) & (event[injection-of-failure]))
+◇[0,0] (event[injection-of-failure])

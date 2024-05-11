@@ -9,6 +9,7 @@ import cambio.monitoring.mosim.import.CSVDataImporter
 import cambio.monitoring.mosim.import.DefaultDataSplitter
 import cambio.monitoring.mosim.import.DefaultStimuliParser
 import cambio.monitoring.mosim.import.FileStimuliImporter
+import cambio.monitoring.mosim.preprocessing.DefaultCommandPreprocessor
 import cambio.monitoring.mosim.search.DefaultSearchExecutor
 import cambio.monitoring.mosim.search.DefaultSearchInitializer
 import com.google.common.collect.Multimap
@@ -32,6 +33,7 @@ class SearchRunningService {
 
         val orchestrator = StimuliSearchOrchestrator(
             DefaultMetricsAnalyzer(),
+            DefaultCommandPreprocessor(),
             DefaultDataSplitter(config),
             DefaultSearchInitializer(),
             DefaultSearchExecutor(),

@@ -1,7 +1,7 @@
 package cambio.monitoring.mosim.analysis
 
 import cambio.monitoring.mosim.data.Metrics
-import cambio.monitoring.mosim.util.ASTNodeToMetricDescriptorConverter
+import cambio.monitoring.mosim.util.MetricUtils
 import cambio.tltea.interpreter.connector.value.MetricDescriptor
 import cambio.tltea.parser.core.ASTNode
 import cambio.tltea.parser.core.ValueASTNode
@@ -40,12 +40,12 @@ class DefaultMetricsAnalyzer : MetricsAnalyzer {
 
 
     private fun handleDoubleListener(node: ValueASTNode, metricsForFormula: MutableList<MetricDescriptor>) {
-        val descriptor = ASTNodeToMetricDescriptorConverter.convertToDoubleMetric(node)
+        val descriptor = MetricUtils.convertToDoubleMetric(node)
         metricsForFormula.add(descriptor)
     }
 
     private fun handleBooleanListener(node: ValueASTNode, metricsForFormula: MutableList<MetricDescriptor>) {
-        val descriptor = ASTNodeToMetricDescriptorConverter.convertToBooleanMetric(node)
+        val descriptor = MetricUtils.convertToBooleanMetric(node)
         metricsForFormula.add(descriptor)
     }
 

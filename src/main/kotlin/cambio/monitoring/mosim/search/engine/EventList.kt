@@ -1,9 +1,13 @@
 package cambio.monitoring.mosim.search.engine
 
+import cambio.monitoring.mosim.search.event.BooleanEvent
+import cambio.monitoring.mosim.search.event.DoubleEvent
 import cambio.monitoring.mosim.search.event.Event
 import cambio.monitoring.mosim.search.event.TimedEvent
+import cambio.tltea.interpreter.connector.value.MetricDescriptor
 import cambio.tltea.parser.core.temporal.TimeInstance
 import java.util.*
+import kotlin.collections.List
 
 /**
  * A list of events sorted by time.
@@ -23,6 +27,23 @@ class EventList() {
             listCopy.addAll(it.value); listCopy
         }
         return EventList(TreeMap(eventCopy))
+    }
+
+    fun getEventList(metric: MetricDescriptor): List<Pair<TimeInstance, Event>> {
+        val eventList = mutableListOf<Pair<TimeInstance, Event>>()
+        for (entry in this.events) {
+            for (event in entry.value) {
+                val eventMetric = when (event) {
+                    is BooleanEvent -> event.descriptor
+                    is DoubleEvent -> event.descriptor
+                    else -> null
+                }
+                if (metric == eventMetric) {
+                    eventList.add(Pair(entry.key, event))
+                }
+            }
+        }
+        return eventList
     }
 
     /**
