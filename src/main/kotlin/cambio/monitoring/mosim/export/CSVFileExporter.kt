@@ -79,11 +79,10 @@ class CSVFileExporter(private val monitoringCSVLoc: String, private val config: 
         writer: BufferedWriter
     ) {
         writer.write(monitoringData.headers)
-        writer.newLine()
         val endIndexInclusive = (endIndex + 1).coerceAtMost(monitoringData.data.size)
         for (line in monitoringData.data.subList(startIndex, endIndexInclusive)) {
-            writer.write(line)
             writer.newLine()
+            writer.write(line)
         }
         writer.close()
     }
