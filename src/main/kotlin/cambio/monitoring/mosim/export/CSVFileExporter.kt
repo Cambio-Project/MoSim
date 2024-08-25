@@ -20,6 +20,9 @@ class CSVFileExporter(private val monitoringCSVLoc: String, private val config: 
 
     override fun export(occurrences: List<Pair<TimeInstance, TimeInstance>>) {
         val monitoringData = readMonitoringData()
+        if (occurrences.isNotEmpty()) {
+            TempFileUtils.createOutputDir(TempFileUtils.OUTPUT_DIR, config.id)
+        }
         for (occurrence in occurrences.withIndex()) {
             val startValue = occurrence.value.first.time
             val endValue = occurrence.value.second.time

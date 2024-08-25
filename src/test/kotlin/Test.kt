@@ -18,7 +18,6 @@ import java.io.File
 class Test {
     private fun test(monitoringLoc: String, mtlLoc: String) {
         val config = SearchConfiguration(id = "test")
-        TempFileUtils.createOutputDir(TempFileUtils.OUTPUT_DIR, config.id)
 
         val orchestrator = StimuliSearchOrchestrator(
             DefaultMetricsAnalyzer(),

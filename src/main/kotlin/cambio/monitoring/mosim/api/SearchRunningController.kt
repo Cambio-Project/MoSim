@@ -16,9 +16,9 @@ import java.io.IOException
 import java.nio.file.Path
 
 @RestController
-class SimulationRunningController @Autowired constructor(private var simulationRunningService: SearchRunningService) {
+class SearchRunningController @Autowired constructor(private var simulationRunningService: SearchRunningService) {
 
-    private var logger = LoggerFactory.getLogger(SimulationRunningController::class.java)
+    private var logger = LoggerFactory.getLogger(SearchRunningController::class.java)
 
     @PostMapping("/search/upload")
     @Throws(IOException::class)
@@ -50,7 +50,6 @@ class SimulationRunningController @Autowired constructor(private var simulationR
             }
 
             val tmpFolder = prepareTmpFolder()
-            prepareOutputFolder(id)
             val savedFiles = prepareFiles(mtls, monitoringData, tmpFolder)
 
             simulationRunningService.runSearch(savedFiles, id, searchWindowSize)
@@ -70,10 +69,6 @@ class SimulationRunningController @Autowired constructor(private var simulationR
             logger.error(errorMessage)
             ResponseEntity<String?>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR)
         }
-    }
-
-    private fun prepareOutputFolder(id: String): Path {
-        return TempFileUtils.createOutputDir(TempFileUtils.OUTPUT_DIR, id)
     }
 
     private fun prepareTmpFolder(): Path {
