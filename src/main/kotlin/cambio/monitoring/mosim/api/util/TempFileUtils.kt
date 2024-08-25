@@ -38,8 +38,6 @@ class TempFileUtils {
             return try {
                 if (fileName.contains("..")) {
                     throw Exception("Filename contains invalid path sequence: $fileName")
-                } else if (file.isEmpty) {
-                    throw Exception(String.format("The uploaded file <%s> is empty.", fileName))
                 }
                 val content = file.bytes
                 createFile(path, fileName, content)
