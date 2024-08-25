@@ -16,9 +16,11 @@ import kotlin.collections.List
  */
 class EventList() {
     private var events: TreeMap<TimeInstance, MutableList<Event>> = TreeMap()
+    lateinit var maxTime: TimeInstance
 
-    private constructor(events: TreeMap<TimeInstance, MutableList<Event>>) : this() {
+    private constructor(events: TreeMap<TimeInstance, MutableList<Event>>, maxTime: TimeInstance) : this() {
         this.events = events
+        this.maxTime = maxTime
     }
 
     fun clone(): EventList {
@@ -26,7 +28,7 @@ class EventList() {
             val listCopy = mutableListOf<Event>()
             listCopy.addAll(it.value); listCopy
         }
-        return EventList(TreeMap(eventCopy))
+        return EventList(TreeMap(eventCopy), maxTime)
     }
 
     fun getEventList(metric: MetricDescriptor): List<Pair<TimeInstance, Event>> {

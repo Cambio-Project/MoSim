@@ -8,7 +8,12 @@ class DefaultDataSplitter(private val config: SearchConfiguration) : DataSplitte
     override fun split(completeList: EventList): List<Pair<TimeInstance, EventList>> {
         val duration = TimeInstance(config.searchWindowSize)
         val step = TimeInstance(config.searchInterval)
-        val latestTime = completeList.getLatestTime()
+        val latestTime = if (completeList.hasNext()) {
+            completeList.getLatestTime()
+        } else {
+            completeList.maxTime
+        }
+
         val latestStart = latestTime.subtract(duration)
 
         val splitList = mutableListOf<Pair<TimeInstance, EventList>>()

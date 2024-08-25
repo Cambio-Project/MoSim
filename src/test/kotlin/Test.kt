@@ -51,6 +51,17 @@ class Test {
         println("Shutting Down MoSIM!")
     }
 
+    @Test
+    fun emptyTest() {
+        println("Starting MoSIM!")
+
+        val monitoringCSVLoc =
+            "src/test/resources/data_full_example.csv"
+        val mtlLoc = "src/test/resources/mtl_empty.mtl"
+        test(monitoringCSVLoc, mtlLoc)
+
+        println("Shutting Down MoSIM!")
+    }
 
     @Test
     fun killCommandTest() {

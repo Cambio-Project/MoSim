@@ -25,14 +25,17 @@ class CSVDataImporter(private val monitoringCSVLoc: String) : DataImporter {
         initiateState()
         val br = BufferedReader(FileReader(monitoringCSVLoc))
         var line: String? = br.readLine()
+        var lastTime = TimeInstance(0)
         identifyInterestingColumnHeaders(line, metrics)
         line = br.readLine()
         while (line != null) {
             val valueInLine = line.split(columnSeparator)
             addAllDoubleColumnsOfInterest(valueInLine)
             addAllBooleanColumnsOfInterest(valueInLine)
+            lastTime = toTimeInstance(valueInLine[0])
             line = br.readLine()
         }
+        monitoringData.maxTime = lastTime
         return monitoringData
     }
 
