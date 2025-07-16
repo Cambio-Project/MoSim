@@ -10,7 +10,7 @@ import java.io.FileReader
 
 class CSVFileExporter(private val monitoringCSVLoc: String, private val config: SearchConfiguration) : Exporter {
     private val columnSeparator: String = ","
-    private val relativeTeamHeader = "time_relative"
+    private val relativeTimeHeader = "time_relative"
 
     private data class MonitoringData(
         val headers: String,
@@ -83,7 +83,7 @@ class CSVFileExporter(private val monitoringCSVLoc: String, private val config: 
         monitoringData: MonitoringData,
         writer: BufferedWriter
     ) {
-        writer.write(relativeTeamHeader + columnSeparator + monitoringData.headers)
+        writer.write(relativeTimeHeader + columnSeparator + monitoringData.headers)
         val endIndexInclusive = (endIndex + 1).coerceAtMost(monitoringData.data.size)
         for (line in monitoringData.data.subList(startIndex, endIndexInclusive)) {
             val valueInLine = line.split(columnSeparator)

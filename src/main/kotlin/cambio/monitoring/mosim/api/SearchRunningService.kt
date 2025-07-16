@@ -5,6 +5,7 @@ import cambio.monitoring.mosim.analysis.DefaultMetricsAnalyzer
 import cambio.monitoring.mosim.config.SearchConfiguration
 import cambio.monitoring.mosim.evaluation.DefaultEvaluator
 import cambio.monitoring.mosim.export.CSVFileExporter
+import cambio.monitoring.mosim.export.MetaDataFileExporter
 import cambio.monitoring.mosim.import.CSVDataImporter
 import cambio.monitoring.mosim.import.DefaultDataSplitter
 import cambio.monitoring.mosim.import.DefaultStimuliParser
@@ -39,7 +40,7 @@ class SearchRunningService {
             DefaultSearchExecutor(),
             DefaultStimuliParser(),
             DefaultEvaluator(config),
-            CSVFileExporter(monitoringDataPath, config)
+            listOf(CSVFileExporter(monitoringDataPath, config), MetaDataFileExporter(config))
         )
 
         orchestrator.search(CSVDataImporter(monitoringDataPath), FileStimuliImporter(mtlPath, config))

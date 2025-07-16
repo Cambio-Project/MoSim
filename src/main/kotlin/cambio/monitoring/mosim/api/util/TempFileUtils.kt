@@ -78,7 +78,10 @@ class TempFileUtils {
                 Files.createDirectory(outPutDirPath)
             }
             val simulationOutputDirPath = getOutputDir(outputDirName, simulationId)
-            return Files.createDirectory(simulationOutputDirPath)
+            if(!Files.exists(simulationOutputDirPath)){
+                Files.createDirectory(simulationOutputDirPath)
+            }
+            return simulationOutputDirPath;
         }
 
         fun getOutputDir(outputDirName: String, simulationId: String): Path {

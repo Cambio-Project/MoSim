@@ -18,7 +18,7 @@ class StimuliSearchOrchestrator(
     private val searchExecutor: SearchExecutor,
     private val stimuliParser: StimuliParser,
     private val evaluator: Evaluator,
-    private val exporter: Exporter
+    private val exporters: List<Exporter>
 
 ) {
     fun search(dataImporter: DataImporter, stimuliImporter: StimuliImporter) {
@@ -40,6 +40,9 @@ class StimuliSearchOrchestrator(
         }
 
         val occurrences = evaluator.evaluate(results)
-        exporter.export(occurrences)
+
+        for(exporter in exporters){
+            exporter.export(occurrences)
+        }
     }
 }
