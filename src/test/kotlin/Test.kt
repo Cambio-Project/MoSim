@@ -1,9 +1,9 @@
 import cambio.monitoring.mosim.StimuliSearchOrchestrator
 import cambio.monitoring.mosim.analysis.DefaultMetricsAnalyzer
-import cambio.monitoring.mosim.api.util.TempFileUtils
 import cambio.monitoring.mosim.config.SearchConfiguration
 import cambio.monitoring.mosim.evaluation.DefaultEvaluator
 import cambio.monitoring.mosim.export.CSVFileExporter
+import cambio.monitoring.mosim.export.MetaDataFileExporter
 import cambio.monitoring.mosim.import.CSVDataImporter
 import cambio.monitoring.mosim.import.DefaultDataSplitter
 import cambio.monitoring.mosim.import.DefaultStimuliParser
@@ -27,7 +27,7 @@ class Test {
             DefaultSearchExecutor(),
             DefaultStimuliParser(),
             DefaultEvaluator(config),
-            CSVFileExporter(monitoringLoc, config)
+            listOf(CSVFileExporter(monitoringLoc, config), MetaDataFileExporter(config))
         )
 
         orchestrator.search(CSVDataImporter(monitoringLoc), FileStimuliImporter(mtlLoc, config))
@@ -39,12 +39,36 @@ class Test {
     }
 
     @Test
-    fun test() {
+    fun testDispelMegaDataset() {
+        println("Starting MoSIM!")
+
+        val monitoringCSVLoc =
+            "src/test/resources/data_dispel_all_metrics2.csv"
+        val mtlLoc = "src/test/resources/mtl_dispel_all_metrics.mtl"
+        test(monitoringCSVLoc, mtlLoc)
+
+        println("Shutting Down MoSIM!")
+    }
+
+    @Test
+    fun testPassive() {
         println("Starting MoSIM!")
 
         val monitoringCSVLoc =
             "src/test/resources/data_example.csv"
         val mtlLoc = "src/test/resources/mtl_example.mtl"
+        test(monitoringCSVLoc, mtlLoc)
+
+        println("Shutting Down MoSIM!")
+    }
+
+    @Test
+    fun testPassive2() {
+        println("Starting MoSIM!")
+
+        val monitoringCSVLoc =
+            "src/test/resources/data_example.csv"
+        val mtlLoc = "src/test/resources/mtl_example1.mtl"
         test(monitoringCSVLoc, mtlLoc)
 
         println("Shutting Down MoSIM!")
@@ -130,6 +154,18 @@ class Test {
         val monitoringCSVLoc =
             "src/test/resources/data_full_example.csv"
         val mtlLoc = "src/test/resources/mtl_full_example.mtl"
+        test(monitoringCSVLoc, mtlLoc)
+
+        println("Shutting Down MoSIM!")
+    }
+
+    @Test
+    fun fullMTLTest2() {
+        println("Starting MoSIM!")
+
+        val monitoringCSVLoc =
+            "src/test/resources/data_full_example.csv"
+        val mtlLoc = "src/test/resources/mtl_doubleFailure_example.mtl"
         test(monitoringCSVLoc, mtlLoc)
 
         println("Shutting Down MoSIM!")
