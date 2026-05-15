@@ -8,6 +8,7 @@ import cambio.monitoring.mosim.export.CSVFileExporter
 import cambio.monitoring.mosim.export.MetaDataFileExporter
 import cambio.monitoring.mosim.import.CSVDataImporter
 import cambio.monitoring.mosim.import.DefaultDataSplitter
+import cambio.monitoring.mosim.import.DefaultEndModeDataManipulator
 import cambio.monitoring.mosim.import.DefaultStimuliParser
 import cambio.monitoring.mosim.import.FileStimuliImporter
 import cambio.monitoring.mosim.preprocessing.DefaultCommandPreprocessor
@@ -19,7 +20,7 @@ import org.springframework.stereotype.Service
 @Service
 class SearchRunningService {
 
-    fun runSearch(inputFiles: Multimap<String, String>, id: String, searchWindowSize: Double) {
+    fun runSearch(inputFiles: Multimap<String, String>, id: String, searchWindowSize: Double, endMode: Boolean) {
         val monitoringDataPathCollection = inputFiles["monitoring-data"]
         val mtlPathCollection = inputFiles["mtl"]
         if (monitoringDataPathCollection.isEmpty()) {
@@ -36,6 +37,7 @@ class SearchRunningService {
             DefaultMetricsAnalyzer(),
             DefaultCommandPreprocessor(),
             DefaultDataSplitter(config),
+            DefaultEndModeDataManipulator(),
             DefaultSearchInitializer(),
             DefaultSearchExecutor(),
             DefaultStimuliParser(),
@@ -43,7 +45,7 @@ class SearchRunningService {
             listOf(CSVFileExporter(monitoringDataPath, config), MetaDataFileExporter(config))
         )
 
-        orchestrator.search(CSVDataImporter(monitoringDataPath), FileStimuliImporter(mtlPath, config))
+        orchestrator.search(CSVDataImporter(monitoringDataPath), FileStimuliImporter(mtlPath, config), endMode)
     }
 
 }

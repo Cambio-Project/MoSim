@@ -224,7 +224,7 @@ class LoadCommandSubstitutor(private val command: String) : CommandSubstitutor {
 
     private fun handleFoundLoad(
         events: EventList,
-        metricCheckWindow: List<Pair<TimeInstance, Event>>
+        metricCheckWindow: MutableList<Pair<TimeInstance, Event>>
     ) {
         events.addEvent(metricCheckWindow.first().first, BooleanEvent(this.substitutionMetric, true))
         metricCheckWindow.removeFirst()
@@ -232,7 +232,7 @@ class LoadCommandSubstitutor(private val command: String) : CommandSubstitutor {
 
     private fun handleNotFoundLoad(
         events: EventList,
-        metricCheckWindow: List<Pair<TimeInstance, Event>>,
+        metricCheckWindow: MutableList<Pair<TimeInstance, Event>>,
     ) {
         events.addEvent(metricCheckWindow.first().first, BooleanEvent(this.substitutionMetric, false))
         metricCheckWindow.removeFirst()

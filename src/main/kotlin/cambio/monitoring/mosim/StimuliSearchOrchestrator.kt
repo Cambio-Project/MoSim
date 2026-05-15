@@ -14,6 +14,7 @@ class StimuliSearchOrchestrator(
     private val metricsAnalyzer: MetricsAnalyzer,
     private val commandSubstitutor: DefaultCommandPreprocessor,
     private val dataSplitter: DataSplitter,
+    private val endModeDataManipulator: EndModeDataManipulator,
     private val searchInitializer: SearchInitializer,
     private val searchExecutor: SearchExecutor,
     private val stimuliParser: StimuliParser,
@@ -21,16 +22,20 @@ class StimuliSearchOrchestrator(
     private val exporters: List<Exporter>
 
 ) {
-    fun search(dataImporter: DataImporter, stimuliImporter: StimuliImporter) {
+    fun search(dataImporter: DataImporter, stimuliImporter: StimuliImporter, endMode: Boolean) {
         var rawStimuli = stimuliImporter.import()
         rawStimuli = this.commandSubstitutor.substitute(rawStimuli)
         val parsedStimuli = stimuliParser.parse(rawStimuli)
         val metrics = metricsAnalyzer.extract(parsedStimuli)
         val requiredMetrics = this.commandSubstitutor.getRequiredMetrics()
-        val data = dataImporter.import(metrics)
+        val data = dataImporter.import(metrics, endMode)
         val requiredData = dataImporter.import(requiredMetrics)
         this.commandSubstitutor.extend(data, requiredData)
-        val splitData = dataSplitter.split(data)
+        var splitData = dataSplitter.split(data)
+
+        if(endMode){
+           splitData = endModeDataManipulator.manipulate(splitData)
+        }
 
         val results = mutableListOf<Pair<TimeInstance, List<BehaviorInterpretationResult2>>>()
         for (dataSet in splitData) {

@@ -4,6 +4,7 @@ import cambio.monitoring.mosim.data.Metrics
 import cambio.monitoring.mosim.search.engine.EventList
 import cambio.monitoring.mosim.search.event.BooleanEvent
 import cambio.monitoring.mosim.search.event.DoubleEvent
+import cambio.monitoring.mosim.util.EndModeMetricDescriptorProvider
 import cambio.tltea.interpreter.connector.value.MetricDescriptor
 import cambio.tltea.parser.core.temporal.TimeInstance
 import java.io.BufferedReader
@@ -21,7 +22,7 @@ class CSVDataImporter(private val monitoringCSVLoc: String) : DataImporter {
     private var booleanColumnsOfInterest: MutableList<Pair<Int, MetricDescriptor>> = mutableListOf()
     private var monitoringData = EventList()
 
-    override fun import(metrics: Metrics): EventList {
+    override fun import(metrics: Metrics, endMode: Boolean): EventList {
         initiateState()
         val br = BufferedReader(FileReader(monitoringCSVLoc))
         var line: String? = br.readLine()
@@ -32,6 +33,9 @@ class CSVDataImporter(private val monitoringCSVLoc: String) : DataImporter {
             val valueInLine = line.split(columnSeparator)
             addAllDoubleColumnsOfInterest(valueInLine)
             addAllBooleanColumnsOfInterest(valueInLine)
+            if(endMode){
+                addEndValue(valueInLine)
+            }
             lastTime = toTimeInstance(valueInLine[0])
             line = br.readLine()
         }
@@ -91,6 +95,10 @@ class CSVDataImporter(private val monitoringCSVLoc: String) : DataImporter {
         for (column in booleanColumnsOfInterest) {
             monitoringData.addEvent(toTimeInstance(line[0]), toBooleanEvent(line[column.first], column.second))
         }
+    }
+
+    private fun addEndValue(line: List<String>){
+        monitoringData.addEvent(toTimeInstance(line[0]), BooleanEvent(EndModeMetricDescriptorProvider.END_MODE_METRIC_DESCRIPTOR, false))
     }
 
     private fun toDoubleEvent(event: String, metricDescriptor: MetricDescriptor): DoubleEvent {
