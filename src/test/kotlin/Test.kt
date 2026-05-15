@@ -6,6 +6,7 @@ import cambio.monitoring.mosim.export.CSVFileExporter
 import cambio.monitoring.mosim.export.MetaDataFileExporter
 import cambio.monitoring.mosim.import.CSVDataImporter
 import cambio.monitoring.mosim.import.DefaultDataSplitter
+import cambio.monitoring.mosim.import.DefaultEndModeDataManipulator
 import cambio.monitoring.mosim.import.DefaultStimuliParser
 import cambio.monitoring.mosim.import.FileStimuliImporter
 import cambio.monitoring.mosim.preprocessing.DefaultCommandPreprocessor
@@ -16,13 +17,14 @@ import org.junit.jupiter.api.Test
 import java.io.File
 
 class Test {
-    private fun test(monitoringLoc: String, mtlLoc: String) {
+    private fun test(monitoringLoc: String, mtlLoc: String, endMode: Boolean = false) {
         val config = SearchConfiguration(id = "test")
 
         val orchestrator = StimuliSearchOrchestrator(
             DefaultMetricsAnalyzer(),
             DefaultCommandPreprocessor(),
             DefaultDataSplitter(config),
+            DefaultEndModeDataManipulator(),
             DefaultSearchInitializer(),
             DefaultSearchExecutor(),
             DefaultStimuliParser(),
@@ -30,7 +32,7 @@ class Test {
             listOf(CSVFileExporter(monitoringLoc, config), MetaDataFileExporter(config))
         )
 
-        orchestrator.search(CSVDataImporter(monitoringLoc), FileStimuliImporter(mtlLoc, config))
+        orchestrator.search(CSVDataImporter(monitoringLoc), FileStimuliImporter(mtlLoc, config), endMode)
     }
 
     @BeforeEach
