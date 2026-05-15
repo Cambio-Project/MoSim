@@ -30,16 +30,20 @@ class SearchRunningController @Autowired constructor(private var simulationRunni
         @RequestParam("monitoring_data") monitoringData: Array<MultipartFile>,
         @RequestParam("simulation_id") id: String,
         @RequestParam("search_window_size") searchWindowSize: Double,
-        @RequestParam(name = "endMode", required = false, defaultValue = "false") endMode: Boolean
+        @RequestParam(name = "endModeConfig", required = false) endModeConfig: Array<Boolean>?
     ): ResponseEntity<String?> {
-        return runSearch(mtls, monitoringData, id, searchWindowSize, endMode)
+        return runSearch(mtls, monitoringData, id, searchWindowSize, endModeConfig)
     }
 
     // TODO: Handle this call in a non-blocking manner, taking into account that this implementation is not
     //  client friendly as it can time-out the request due to the long processing time.
     @Throws(IOException::class)
     private fun runSearch(
-        mtls: Array<MultipartFile>, monitoringData: Array<MultipartFile>, id: String, searchWindowSize: Double, endMode: Boolean
+        mtls: Array<MultipartFile>,
+        monitoringData: Array<MultipartFile>,
+        id: String,
+        searchWindowSize: Double,
+        endModeConfig: Array<Boolean>?
     ): ResponseEntity<String?> {
         return try {
             if (TempFileUtils.existsSimulationId(id)) {
@@ -53,7 +57,7 @@ class SearchRunningController @Autowired constructor(private var simulationRunni
             val tmpFolder = prepareTmpFolder()
             val savedFiles = prepareFiles(mtls, monitoringData, tmpFolder)
 
-            simulationRunningService.runSearch(savedFiles, id, searchWindowSize, endMode)
+            simulationRunningService.runSearch(savedFiles, id, searchWindowSize, endModeConfig?.toList())
             if (!TempFileUtils.existsSimulationId(id)) {
                 return ResponseEntity(
                     String.format(

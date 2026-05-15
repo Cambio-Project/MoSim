@@ -20,13 +20,18 @@ import org.springframework.stereotype.Service
 @Service
 class SearchRunningService {
 
-    fun runSearch(inputFiles: Multimap<String, String>, id: String, searchWindowSize: Double, endMode: Boolean) {
+    fun runSearch(
+        inputFiles: Multimap<String, String>,
+        id: String,
+        searchWindowSize: Double,
+        endMode: List<Boolean>? = null
+    ) {
         val monitoringDataPathCollection = inputFiles["monitoring-data"]
         val mtlPathCollection = inputFiles["mtl"]
-        if (monitoringDataPathCollection.isEmpty()) {
-            throw IllegalArgumentException("You have to provide monitoring data.")
-        } else if (mtlPathCollection.isEmpty()) {
-            throw IllegalArgumentException("You have to provide mtl formulae.")
+        require(monitoringDataPathCollection.isNotEmpty()) { "You have to provide monitoring data." }
+        require(mtlPathCollection.isNotEmpty()) { "You have to provide mtl formulae." }
+        if (endMode != null) {
+            require(endMode.size == mtlPathCollection.size) { "If you provide end mode, you have to provide the same number of values as mtl formulae." }
         }
         val mtlPath = mtlPathCollection.iterator().next()
         val monitoringDataPath = monitoringDataPathCollection.iterator().next()
@@ -45,7 +50,44 @@ class SearchRunningService {
             listOf(CSVFileExporter(monitoringDataPath, config), MetaDataFileExporter(config))
         )
 
-        orchestrator.search(CSVDataImporter(monitoringDataPath), FileStimuliImporter(mtlPath, config), endMode)
+        if (hasEndMode(endMode)) {
+            if (hasMultipleEndModes(endMode!!) && hasDifferentEndModes(endMode)) {
+                orchestrator.search(
+                    CSVDataImporter(monitoringDataPath),
+                    FileStimuliImporter(mtlPath, config),
+                    endMode
+                )
+            } else {
+                orchestrator.search(
+                    CSVDataImporter(monitoringDataPath),
+                    FileStimuliImporter(mtlPath, config),
+                    endMode[0]
+                )
+            }
+        } else {
+            orchestrator.search(CSVDataImporter(monitoringDataPath), FileStimuliImporter(mtlPath, config), false)
+        }
+    }
+
+    private fun hasEndMode(endMode: List<Boolean>?): Boolean {
+        return !endMode.isNullOrEmpty()
+    }
+
+    private fun hasMultipleEndModes(endMode: List<Boolean>): Boolean {
+        return endMode.size > 2
+    }
+
+    private fun hasDifferentEndModes(endMode: List<Boolean>): Boolean {
+        if (endMode.size < 2) {
+            return false
+        }
+        val firstValue = endMode[0]
+        for (value in endMode) {
+            if (value != firstValue) {
+                return true
+            }
+        }
+        return false
     }
 
 }
