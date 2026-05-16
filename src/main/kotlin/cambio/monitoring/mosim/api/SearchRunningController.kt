@@ -1,6 +1,7 @@
 package cambio.monitoring.mosim.api
 
 import cambio.monitoring.mosim.api.util.TempFileUtils
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.common.collect.ArrayListMultimap
 import com.google.common.collect.Multimap
 import org.apache.tomcat.util.http.fileupload.FileUtils
@@ -17,7 +18,8 @@ import java.nio.file.Path
 
 @RestController
 class SearchRunningController @Autowired constructor(private var simulationRunningService: SearchRunningService) {
-
+    @Autowired
+    private lateinit var objectMapper: ObjectMapper
     private var logger = LoggerFactory.getLogger(SearchRunningController::class.java)
 
     @PostMapping("/search/upload")
@@ -30,8 +32,13 @@ class SearchRunningController @Autowired constructor(private var simulationRunni
         @RequestParam("monitoring_data") monitoringData: Array<MultipartFile>,
         @RequestParam("simulation_id") id: String,
         @RequestParam("search_window_size") searchWindowSize: Double,
-        @RequestParam(name = "endModeConfig", required = false) endModeConfig: Array<Boolean>?
+        @RequestParam(name = "endModeConfig", required = false) endModeConfigJson: String?
     ): ResponseEntity<String?> {
+        val endModeConfig = if (endModeConfigJson != null) {
+            objectMapper.readValue(endModeConfigJson, Array<Boolean>::class.java)
+        } else {
+            null
+        }
         return runSearch(mtls, monitoringData, id, searchWindowSize, endModeConfig)
     }
 
