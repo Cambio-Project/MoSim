@@ -11,8 +11,7 @@ import cambio.tltea.parser.core.temporal.TimeInstance
 class DefaultEndModeDataManipulator : EndModeDataManipulator {
     override fun manipulate(splittedData: List<Pair<TimeInstance, EventList>>): List<Pair<TimeInstance, EventList>> {
         for(dataRow in splittedData){
-            val newMaxTime : TimeInstance = dataRow.second.maxTime.add(TimeInstance(1))
-            dataRow.second.maxTime = newMaxTime
+            val newMaxTime : TimeInstance = dataRow.second.getLatestTime().add(TimeInstance(1))
             dataRow.second.addEvent(newMaxTime, BooleanEvent(EndModeMetricDescriptorProvider.END_MODE_METRIC_DESCRIPTOR, true))
         }
         return splittedData
