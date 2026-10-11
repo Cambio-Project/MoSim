@@ -1,0 +1,92 @@
+ID;MTL;Timed;P_Occurrences;P_Grouped;Threshold (2);P_Position;Applicable?;Exp. Result
+0;0;No;0;-;-;-;1;1
+1;0;No;1;-;-;Mid;1;1
+2;0;No;1;-;-;Start-InEdge;1;1
+;0;No;1;-;-;Start-Partially;;
+3;0;No;1;-;-;Start-OutEdge;1;1
+4;0;No;1;-;-;End-InEdge;1;1
+;0;No;1;-;-;End-Partially;;
+5;0;No;1;-;-;End-OutEdge;1;1
+6;0;No;2;Grouped;Right Below;Mid;1;1
+7;0;No;2;Grouped;Right Below;Start-InEdge;1;1
+8;0;No;2;Grouped;Right Below;Start-Partially;1;1
+9;0;No;2;Grouped;Right Below;Start-OutEdge;1;1
+10;0;No;2;Grouped;Right Below;End-InEdge;1;1
+11;0;No;2;Grouped;Right Below;End-Partially;1;1
+12;0;No;2;Grouped;Right Below;End-OutEdge;1;1
+13;0;No;2;Ungrouped;Right Below;Mid;1;1
+14;0;No;2;Ungrouped;Right Below;Start-InEdge;1;1
+15;0;No;2;Ungrouped;Right Below;Start-Partially;1;1
+16;0;No;2;Ungrouped;Right Below;Start-OutEdge;1;1
+17;0;No;2;Ungrouped;Right Below;End-InEdge;1;1
+18;0;No;2;Ungrouped;Right Below;End-Partially;1;1
+19;0;No;2;Ungrouped;Right Below;End-OutEdge;1;1
+20;0;No;3;Grouped;Right Above;Mid;1;1
+21;0;No;3;Grouped;Right Above;Start-InEdge;1;1
+22;0;No;3;Grouped;Right Above;Start-Partially;1;1
+23;0;No;3;Grouped;Right Above;Start-OutEdge;1;1
+24;0;No;3;Grouped;Right Above;End-InEdge;1;1
+25;0;No;3;Grouped;Right Above;End-Partially;1;1
+26;0;No;3;Grouped;Right Above;End-OutEdge;1;1
+27;0;No;3;Ungrouped;Right Above;Mid;1;0
+28;0;No;3;Ungrouped;Right Above;Start-InEdge;1;0
+29;0;No;3;Ungrouped;Right Above;Start-Partially;1;1
+30;0;No;3;Ungrouped;Right Above;Start-OutEdge;1;1
+31;0;No;3;Ungrouped;Right Above;End-InEdge;1;0
+32;0;No;3;Ungrouped;Right Above;End-Partially;1;1
+33;0;No;3;Ungrouped;Right Above;End-OutEdge;1;1
+34;0;No;All;-;-;-;1;1
+35;0;NO R (true);;;;;1;1
+36;0;NO Q (true);;;;;1;1
+37;0;NO Q and R (true);;;;;1;1
+38;0;Beetween Empties Unsatisfied;;;;;1;1
+39;0;Beetween Second Unsatisfied;;;;;1;0
+40;0;Between Double Unsatisfied;;;;;1;0
+;;Yes;;;;;;
+;;SUMME;;;;;41;
+Bounded-Event-Existence;;;;;;;;
+0;1;No;0;-;-;-;1;1
+1;1;No;1;-;-;Mid;1;1
+2;1;No;1;-;-;Start-InEdge;1;1
+;1;No;1;-;-;Start-Partially;;
+3;1;No;1;-;-;Start-OutEdge;1;1
+4;1;No;1;-;-;End-InEdge;1;1
+;1;No;1;-;-;End-Partially;;
+5;1;No;1;-;-;End-OutEdge;1;1
+6;1;No;2;Grouped;Right Below;Mid;1;1
+7;1;No;2;Grouped;Right Below;Start-InEdge;1;1
+8;1;No;2;Grouped;Right Below;Start-Partially;1;1
+9;1;No;2;Grouped;Right Below;Start-OutEdge;1;1
+10;1;No;2;Grouped;Right Below;End-InEdge;1;1
+11;1;No;2;Grouped;Right Below;End-Partially;1;1
+12;1;No;2;Grouped;Right Below;End-OutEdge;1;1
+13;1;No;2;Ungrouped;Right Below;Mid;1;1
+14;1;No;2;Ungrouped;Right Below;Start-InEdge;1;1
+15;1;No;2;Ungrouped;Right Below;Start-Partially;1;1
+16;1;No;2;Ungrouped;Right Below;Start-OutEdge;1;1
+17;1;No;2;Ungrouped;Right Below;End-InEdge;1;1
+18;1;No;2;Ungrouped;Right Below;End-Partially;1;1
+19;1;No;2;Ungrouped;Right Below;End-OutEdge;1;1
+20;1;No;3;Grouped;Right Above;Mid;1;0
+21;1;No;3;Grouped;Right Above;Start-InEdge;1;0
+22;1;No;3;Grouped;Right Above;Start-Partially;1;1
+23;1;No;3;Grouped;Right Above;Start-OutEdge;1;1
+24;1;No;3;Grouped;Right Above;End-InEdge;1;0
+25;1;No;3;Grouped;Right Above;End-Partially;1;1
+26;1;No;3;Grouped;Right Above;End-OutEdge;1;1
+27;1;No;3;Ungrouped;Right Above;Mid;1;0
+28;1;No;3;Ungrouped;Right Above;Start-InEdge;1;0
+29;1;No;3;Ungrouped;Right Above;Start-Partially;1;1
+30;1;No;3;Ungrouped;Right Above;Start-OutEdge;1;1
+31;1;No;3;Ungrouped;Right Above;End-InEdge;1;0
+32;1;No;3;Ungrouped;Right Above;End-Partially;1;1
+33;1;No;3;Ungrouped;Right Above;End-OutEdge;1;1
+34;1;No;All;-;-;-;1;0
+35;1;NO R (true);;;;;1;1
+36;1;NO Q (true);;;;;1;1
+37;1;NO Q and R (true);;;;;1;1
+38;1;Beetween Empties Unsatisfied;;;;;1;1
+39;1;Beetween Second Unsatisfied;;;;;1;0
+40;1;Between Double Unsatisfied;;;;;1;0
+;;Yes;;;;;;
+;;SUMME;;;;;41;

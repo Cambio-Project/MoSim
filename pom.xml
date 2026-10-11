@@ -151,6 +151,13 @@
             <artifactId>interpreter</artifactId>
             <version>1.0.1-SNAPSHOT</version>
         </dependency>
+
+        <!-- Apache Commons CSV -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <version>1.10.0</version>
+        </dependency>
     </dependencies>
 
 </project>

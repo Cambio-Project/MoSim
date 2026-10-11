@@ -1,0 +1,55 @@
+ID;MTL;Timed;P_Occurrences;P_Position;Area;Applicable?;Exp. Result
+0;0;Yes;0;-;;1;0
+1;0;Yes;n;Mid;;1;1
+2;0;Yes;n;Start-InEdge;;1;0
+3;0;Yes;n;Start-OutEdge;;1;1
+4;0;Yes;n;End-InEdge;;1;0
+5;0;Yes;n;End-OutEdge;;1;1
+6;0;Yes;n;;earlier end in;1;1
+7;0;Yes;0;;earlier end out;1;0
+8;0;EARLY BEFORE;0;;;1;1
+9;0;NO BEFORE;0;;;1;1
+10;0;Before Empties Satisfied;1;;;1;0
+11;0;Before Double Satisfied;1;;;1;0
+;;SUMME;;;;9;
+Liberal;;;;;;;
+0;1;Yes;0;-;;1;0
+1;1;Yes;n;Mid;;1;1
+2;1;Yes;n;Start-InEdge;;1;0
+3;1;Yes;n;Start-OutEdge;;1;1
+4;1;Yes;n;End-InEdge;;1;0
+5;1;Yes;n;End-OutEdge;;1;1
+6;1;Yes;n;;earlier end in;1;1
+7;1;Yes;0;;earlier end out;1;0
+8;1;EARLY BEFORE;0;;;1;1
+9;1;NO BEFORE;0;;;1;1
+10;1;Before Empties Satisfied;1;;;1;0
+11;1;Before Double Satisfied;1;;;1;0
+;;SUMME;;;;9;
+Conservative;;;;;;;
+0;2;Yes;0;-;;1;0
+1;2;Yes;n;Mid;;1;1
+2;2;Yes;n;Start-InEdge;;1;0
+3;2;Yes;n;Start-OutEdge;;1;1
+4;2;Yes;n;End-InEdge;;1;0
+5;2;Yes;n;End-OutEdge;;1;1
+6;2;Yes;n;;earlier end in;1;1
+7;2;Yes;0;;earlier end out;1;0
+8;2;EARLY BEFORE;0;;;1;0
+9;2;NO BEFORE;0;;;1;1
+10;2;Before Empties Satisfied;1;;;1;0
+11;2;Before Double Satisfied;1;;;1;0
+;;SUMME;;;;9;
+;;;;;;;
+;;;;;;;
+;;;;;;;
+;;;;;;;
+;;;;;;;
+;;;;;;;
+;;;;;;;
+;;;;;;;
+;;;;;;;
+;;;;;;;
+;;;;;;;
+;;;;;;;
+;;;;;;;

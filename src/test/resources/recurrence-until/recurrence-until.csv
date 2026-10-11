@@ -1,0 +1,213 @@
+ID;MTL;Timed;Area Position;P_Occurrences;P_Position;Applicable?;Exp. Result
+0;0;Yes;Start;0;-;1;1
+1;0;Yes;Start;1;Mid;1;1
+2;0;Yes;Start;1;Start-InEdge;1;1
+;0;Yes;Start;1;Start-Partially;;
+3;0;Yes;Start;1;Start-OutEdge;1;1
+4;0;Yes;Start;1;End-InEdge;1;1
+;0;Yes;Start;1;End-Partially;;
+;0;Yes;Start;1;End-OutEdge;;
+;0;Yes;Start;2;Mid;;
+5;0;Yes;Start;2;Start-InEdge;1;1
+6;0;Yes;Start;2;Start-Partially;1;1
+7;0;Yes;Start;2;Start-OutEdge;1;1
+8;0;Yes;Start;2;End-InEdge;1;1
+;0;Yes;Start;2;End-Partially;;
+;0;Yes;Start;2;End-OutEdge;;
+9;0;Yes;Mid;0;-;1;1
+10;0;Yes;Mid;1;Mid;1;1
+11;0;Yes;Mid;1;Start-InEdge;1;1
+;0;Yes;Mid;1;Start-Partially;;
+;0;Yes;Mid;1;Start-OutEdge;;
+12;0;Yes;Mid;1;End-InEdge;1;1
+;0;Yes;Mid;1;End-Partially;;
+;0;Yes;Mid;1;End-OutEdge;;
+;0;Yes;Mid;2;Mid;;
+13;0;Yes;Mid;2;Start-InEdge;1;1
+;0;Yes;Mid;2;Start-Partially;;
+;0;Yes;Mid;2;Start-OutEdge;;
+14;0;Yes;Mid;2;End-InEdge;1;1
+;0;Yes;Mid;2;End-Partially;;
+;0;Yes;Mid;2;End-OutEdge;;
+15;0;Yes;End;0;-;1;1
+16;0;Yes;End;1;Mid;1;1
+17;0;Yes;End;1;Start-InEdge;1;1
+;0;Yes;End;1;Start-Partially;;
+;0;Yes;End;1;Start-OutEdge;;
+18;0;Yes;End;1;End-InEdge;1;1
+;0;Yes;End;1;End-Partially;;
+19;0;Yes;End;1;End-OutEdge;1;1
+;0;Yes;End;2;Mid;;
+20;0;Yes;End;2;Start-InEdge;1;1
+;0;Yes;End;2;Start-Partially;;
+;0;Yes;End;2;Start-OutEdge;;
+21;0;Yes;End;2;End-InEdge;1;1
+22;0;Yes;End;2;End-Partially;1;1
+23;0;Yes;End;2;End-OutEdge;1;1
+24;0;Yes;-;All;-;1;1
+25;0;Yes;-;None;-;1;0
+26;0;NO R (true);;;;1;0
+27;0;NO Q (true);;;;1;1
+28;0;NO Q and R (true);;;;1;1
+29;0;Beetween Empties Unsatisfied;;;;1;1
+30;0;Beetween Second Unsatisfied;;;;1;1
+;0;Between Double Unsatisfied;;;;;
+;;No;;;;;
+31;0;Yes;End2;0;-;1;0
+32;0;Yes;End2;1;Mid;1;0
+33;0;Yes;End2;1;Start-InEdge;1;0
+;0;Yes;End2;1;Start-Partially;;
+34;0;Yes;End2;1;Start-OutEdge;1;0
+35;0;Yes;End2;1;End-InEdge;1;1
+;0;Yes;End2;1;End-Partially;;
+;0;Yes;End2;1;End-OutEdge;;
+;0;Yes;End2;2;Mid;;
+36;0;Yes;End2;2;Start-InEdge;1;0
+37;0;Yes;End2;2;Start-Partially;1;0
+38;0;Yes;End2;2;Start-OutEdge;1;0
+39;0;Yes;End2;2;End-InEdge;1;1
+;0;Yes;End2;2;End-Partially;;
+;0;Yes;End2;2;End-OutEdge;;
+;;SUMME;;;;40;
+Fixed Reccurrence;;;;;;;
+0;1;Yes;Start;0;-;1;0
+1;1;Yes;Start;1;Mid;1;1
+2;1;Yes;Start;1;Start-InEdge;1;1
+;1;Yes;Start;1;Start-Partially;;
+3;1;Yes;Start;1;Start-OutEdge;1;0
+4;1;Yes;Start;1;End-InEdge;1;1
+;1;Yes;Start;1;End-Partially;;
+;1;Yes;Start;1;End-OutEdge;;
+;1;Yes;Start;2;Mid;;
+5;1;Yes;Start;2;Start-InEdge;1;1
+6;1;Yes;Start;2;Start-Partially;1;1
+7;1;Yes;Start;2;Start-OutEdge;1;0
+8;1;Yes;Start;2;End-InEdge;1;1
+;1;Yes;Start;2;End-Partially;;
+;1;Yes;Start;2;End-OutEdge;;
+9;1;Yes;Mid;0;-;1;0
+10;1;Yes;Mid;1;Mid;1;1
+11;1;Yes;Mid;1;Start-InEdge;1;1
+;1;Yes;Mid;1;Start-Partially;;
+;1;Yes;Mid;1;Start-OutEdge;;
+12;1;Yes;Mid;1;End-InEdge;1;1
+;1;Yes;Mid;1;End-Partially;;
+;1;Yes;Mid;1;End-OutEdge;;
+;1;Yes;Mid;2;Mid;;
+13;1;Yes;Mid;2;Start-InEdge;1;1
+;1;Yes;Mid;2;Start-Partially;;
+;1;Yes;Mid;2;Start-OutEdge;;
+14;1;Yes;Mid;2;End-InEdge;1;1
+;1;Yes;Mid;2;End-Partially;;
+;1;Yes;Mid;2;End-OutEdge;;
+15;1;Yes;End;0;-;1;0
+16;1;Yes;End;1;Mid;1;1
+17;1;Yes;End;1;Start-InEdge;1;1
+;1;Yes;End;1;Start-Partially;;
+;1;Yes;End;1;Start-OutEdge;;
+18;1;Yes;End;1;End-InEdge;1;1
+;1;Yes;End;1;End-Partially;;
+19;1;Yes;End;1;End-OutEdge;1;0
+;1;Yes;End;2;Mid;;
+20;1;Yes;End;2;Start-InEdge;1;1
+;1;Yes;End;2;Start-Partially;;
+;1;Yes;End;2;Start-OutEdge;;
+21;1;Yes;End;2;End-InEdge;1;1
+22;1;Yes;End;2;End-Partially;1;1
+23;1;Yes;End;2;End-OutEdge;1;0
+24;1;Yes;-;All;-;1;1
+25;1;Yes;-;None;-;1;0
+26;1;NO R (true);;;;1;0
+27;1;NO Q (true);;;;1;1
+28;1;NO Q and R (true);;;;1;1
+29;1;Beetween Empties Unsatisfied;;;;1;1
+30;1;Beetween Second Unsatisfied;;;;1;0
+;1;Between Double Unsatisfied;;;;;
+;1;No;;;;;
+31;1;Yes;End2;0;-;1;0
+32;1;Yes;End2;1;Mid;1;0
+33;1;Yes;End2;1;Start-InEdge;1;0
+;1;Yes;End2;1;Start-Partially;;
+34;1;Yes;End2;1;Start-OutEdge;1;0
+35;1;Yes;End2;1;End-InEdge;1;1
+;1;Yes;End2;1;End-Partially;;
+;1;Yes;End2;1;End-OutEdge;;
+;1;Yes;End2;2;Mid;;
+36;1;Yes;End2;2;Start-InEdge;1;0
+37;1;Yes;End2;2;Start-Partially;1;0
+38;1;Yes;End2;2;Start-OutEdge;1;0
+39;1;Yes;End2;2;End-InEdge;1;1
+;1;Yes;End2;2;End-Partially;;
+;1;Yes;End2;2;End-OutEdge;;
+;;SUMME;;;;40;
+Liberal Recurrence;;;;;;;
+0;2;Yes;Start;0;-;1;0
+1;2;Yes;Start;1;Mid;1;1
+2;2;Yes;Start;1;Start-InEdge;1;1
+;2;Yes;Start;1;Start-Partially;;
+3;2;Yes;Start;1;Start-OutEdge;1;0
+4;2;Yes;Start;1;End-InEdge;1;1
+;2;Yes;Start;1;End-Partially;;
+;2;Yes;Start;1;End-OutEdge;;
+;2;Yes;Start;2;Mid;;
+5;2;Yes;Start;2;Start-InEdge;1;1
+6;2;Yes;Start;2;Start-Partially;1;1
+7;2;Yes;Start;2;Start-OutEdge;1;0
+8;2;Yes;Start;2;End-InEdge;1;1
+;2;Yes;Start;2;End-Partially;;
+;2;Yes;Start;2;End-OutEdge;;
+9;2;Yes;Mid;0;-;1;0
+10;2;Yes;Mid;1;Mid;1;1
+11;2;Yes;Mid;1;Start-InEdge;1;1
+;2;Yes;Mid;1;Start-Partially;;
+;2;Yes;Mid;1;Start-OutEdge;;
+12;2;Yes;Mid;1;End-InEdge;1;1
+;2;Yes;Mid;1;End-Partially;;
+;2;Yes;Mid;1;End-OutEdge;;
+;2;Yes;Mid;2;Mid;;
+13;2;Yes;Mid;2;Start-InEdge;1;1
+;2;Yes;Mid;2;Start-Partially;;
+;2;Yes;Mid;2;Start-OutEdge;;
+14;2;Yes;Mid;2;End-InEdge;1;1
+;2;Yes;Mid;2;End-Partially;;
+;2;Yes;Mid;2;End-OutEdge;;
+15;2;Yes;End;0;-;1;0
+16;2;Yes;End;1;Mid;1;1
+17;2;Yes;End;1;Start-InEdge;1;1
+;2;Yes;End;1;Start-Partially;;
+;2;Yes;End;1;Start-OutEdge;;
+18;2;Yes;End;1;End-InEdge;1;1
+;2;Yes;End;1;End-Partially;;
+19;2;Yes;End;1;End-OutEdge;1;0
+;2;Yes;End;2;Mid;;
+20;2;Yes;End;2;Start-InEdge;1;1
+;2;Yes;End;2;Start-Partially;;
+;2;Yes;End;2;Start-OutEdge;;
+21;2;Yes;End;2;End-InEdge;1;1
+22;2;Yes;End;2;End-Partially;1;1
+23;2;Yes;End;2;End-OutEdge;1;0
+24;2;Yes;-;All;-;1;1
+25;2;Yes;-;None;-;1;0
+26;2;NO R (true);;;;1;0
+27;2;NO Q (true);;;;1;1
+28;2;NO Q and R (true);;;;1;1
+29;2;Beetween Empties Unsatisfied;;;;1;1
+30;2;Beetween Second Unsatisfied;;;;1;0
+;2;Between Double Unsatisfied;;;;;
+;2;No;;;;;
+31;2;Yes;End2;0;-;1;0
+32;2;Yes;End2;1;Mid;1;1
+33;2;Yes;End2;1;Start-InEdge;1;1
+;2;Yes;End2;1;Start-Partially;;
+34;2;Yes;End2;1;Start-OutEdge;1;0
+35;2;Yes;End2;1;End-InEdge;1;1
+;2;Yes;End2;1;End-Partially;;
+;2;Yes;End2;1;End-OutEdge;;
+;2;Yes;End2;2;Mid;;
+36;2;Yes;End2;2;Start-InEdge;1;1
+37;2;Yes;End2;2;Start-Partially;1;1
+38;2;Yes;End2;2;Start-OutEdge;1;0
+39;2;Yes;End2;2;End-InEdge;1;1
+;2;Yes;End2;2;End-Partially;;
+;2;Yes;End2;2;End-OutEdge;;
+;;SUMME;;;;40;
