@@ -98,7 +98,11 @@ class SearchRunningController @Autowired constructor(private var simulationRunni
     }
 
     private fun cleanUp(folder: Path) {
-        FileUtils.deleteDirectory(folder.toFile())
+        try {
+            FileUtils.deleteDirectory(folder.toFile())
+        } catch (e: IOException) {
+            logger.error("Failed to delete temporary folder: ${folder.toAbsolutePath()}", e)
+        }
     }
 
 }
