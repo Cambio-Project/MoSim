@@ -30,9 +30,7 @@ class SearchRunningService {
         val mtlPathCollection = inputFiles["mtl"]
         require(monitoringDataPathCollection.isNotEmpty()) { "You have to provide monitoring data." }
         require(mtlPathCollection.isNotEmpty()) { "You have to provide mtl formulae." }
-        if (endMode != null) {
-            require(endMode.size == mtlPathCollection.size) { "If you provide end mode, you have to provide the same number of values as mtl formulae." }
-        }
+
         val mtlPath = mtlPathCollection.iterator().next()
         val monitoringDataPath = monitoringDataPathCollection.iterator().next()
 
